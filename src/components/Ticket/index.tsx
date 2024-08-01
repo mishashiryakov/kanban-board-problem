@@ -25,6 +25,8 @@ export const Ticket: FC<ITicketProps> = ({ name, ticketCode, priority }) => {
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {};
 
+  const PriorityComponent = priorityComponents[priority] || null;
+
   return (
     <div className="ticket">
       <div className="ticket-header">
@@ -35,17 +37,17 @@ export const Ticket: FC<ITicketProps> = ({ name, ticketCode, priority }) => {
       </div>
       <div className="ticket-description ">
         <p className="ticket-code">{ticketCode}</p>
-        {priority === EPriorities.LOW ? (
-          <LowPriority />
-        ) : priority === EPriorities.MEDIUM ? (
-          <MedimumPriority />
-        ) : (
-          <HighPriority />
-        )}
+        {PriorityComponent && <PriorityComponent />}
       </div>
       <select value={selectedOption} onChange={handleChange}>
         {/* Map options with Statuses here <option value={status}>{status}</option> */}
       </select>
     </div>
   );
+};
+
+const priorityComponents = {
+  [EPriorities.LOW]: LowPriority,
+  [EPriorities.MEDIUM]: MedimumPriority,
+  [EPriorities.HIGH]: HighPriority,
 };

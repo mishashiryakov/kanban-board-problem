@@ -1,6 +1,6 @@
-import { FC, Dispatch, SetStateAction, useCallback, useRef } from "react";
+import { FC, Dispatch, SetStateAction } from "react";
 import { StatusColumn } from "../StatusColumn";
-import { ITicket, EPriorities } from "../Ticket";
+import { ITicket } from "../Ticket";
 import "./styles.scss";
 
 export interface IColumns {
@@ -16,8 +16,6 @@ export const KanbanBoard: FC<IKanbanBoard> = ({ columns, setColumns }) => {
   const deleteTicket = () => {};
 
   const changeTicketStatus = () => {};
-
-  const sortTicketsByPriority = () => {};
 
   return (
     <div className="board">
