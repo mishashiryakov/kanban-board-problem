@@ -1,9 +1,9 @@
 import { FC, Dispatch, SetStateAction } from "react";
-import { StatusColumn, Ticket, ITicket } from "./index";
+import { StatusColumn, Ticket, ITicket } from "../index";
 import "./styles.scss";
 
 export interface IColumns {
-  [statusName: string]: ITicket[];
+  [status: string]: ITicket[];
 }
 
 interface IKanbanBoard {
@@ -19,7 +19,7 @@ export const KanbanBoard: FC<IKanbanBoard> = ({ columns, setColumns }) => {
   return (
     <div className="board">
       {/* Map StatusColumns here
-      <StatusColumn statusName={} ticketsAmount={}>
+      <StatusColumn status={} ticketsAmount={}>
         Map tickets here
         <Ticket />
       </StatusColumn> */}

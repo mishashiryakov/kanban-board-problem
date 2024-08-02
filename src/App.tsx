@@ -5,7 +5,7 @@ import { PROJECTS_API_URL, TICKETS_PRIORITIES_URL } from "./constants";
 
 // return type for PROJECTS_API_URL
 interface IProjects {
-  [key: string]: {
+  [project: string]: {
     stories: {
       id: string;
       tickets: ITicket[];

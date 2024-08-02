@@ -1,4 +1,4 @@
-import { useState, FC, ChangeEvent } from "react";
+import { FC, ChangeEvent } from "react";
 import { LowPriority, MedimumPriority, HighPriority, Cross } from "../../icons";
 import "./styles.scss";
 
@@ -16,7 +16,10 @@ export interface ITicket {
   priority: EPriorities;
 }
 
-interface ITicketProps extends ITicket {}
+interface ITicketProps extends ITicket {
+  deleteTicket: () => void;
+  changeTicketStatus: () => void;
+}
 
 export const Ticket: FC<ITicketProps> = ({
   name,
@@ -24,12 +27,14 @@ export const Ticket: FC<ITicketProps> = ({
   id,
   status,
   priority,
+  deleteTicket,
+  changeTicketStatus,
 }) => {
   console.log("Ticket re-rendered: ", name);
 
-  const [selectedOption, setSelectedOption] = useState<string>(status);
-
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {};
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    changeTicketStatus();
+  };
 
   const PriorityComponent = priorityComponents[priority] || null;
 
@@ -40,7 +45,7 @@ export const Ticket: FC<ITicketProps> = ({
         <button
           className="close-button"
           onClick={() => {
-            // add delete logic here
+            deleteTicket();
           }}
         >
           <Cross />
@@ -50,8 +55,8 @@ export const Ticket: FC<ITicketProps> = ({
         <p className="ticket-code">{ticketCode}</p>
         {PriorityComponent && <PriorityComponent />}
       </div>
-      <select value={selectedOption} onChange={handleSelectChange}>
-        {/* Map options with Statuses here <option value={status}>{status}</option> */}
+      <select value={status} onChange={handleSelectChange}>
+        {/* Map options with statuses here <option value={status}>{status}</option> */}
       </select>
     </div>
   );
