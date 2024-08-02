@@ -1,23 +1,25 @@
-import { FC } from "react";
-import { Ticket, ITicket } from "../Ticket";
-
+import { FC, ReactNode } from "react";
 import "./styles.scss";
 
 interface IStatusColumn {
-  tickets: ITicket[];
+  ticketsAmount: number;
   statusName: string;
+  children: ReactNode;
 }
 
-export const StatusColumn: FC<IStatusColumn> = ({ tickets, statusName }) => {
+export const StatusColumn: FC<IStatusColumn> = ({
+  ticketsAmount,
+  statusName,
+  children,
+}) => {
   return (
     <div className="status-column">
       <div className="status-header">
         <p className="status-name">
-          {statusName} {tickets.length}
+          {statusName} {ticketsAmount}
         </p>
       </div>
-      {/* Map tickets here */}
-      {/* <Ticket /> */}
+      {children}
     </div>
   );
 };

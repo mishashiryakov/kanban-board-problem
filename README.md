@@ -1,15 +1,15 @@
-Global Kanban board app for organization
+Global Kanban board app for entire Organization.
 
-Client asks about new feature. He wants to see all active tickets in one place. Therefore we created an API that would return every project with its data.
+Client asks about new feature. He wants to see all active tickets from every project in one place. Therefore we created an API that would return every project with its data.
 
 Requirements
 
-1. Fetch data for existing projects(PROJECTS_API_URL) and tickets priorities (TICKETS_PRIORITIES_URL) from different APIs. You can URL's below requirements
+1. Fetch data for existing projects(PROJECTS_API_URL) and priorities for tickets.a(TICKETS_PRIORITIES_URL) from different APIs. You can find URL's below requirements.
 2. Transform data to match existing interface.
    a. Group tickets by their status. We assume that we don't know what are possible statuses.
    b. Each ticket should get a priority.
 3. Allow tickets to be deleted.
-4. Allow ticket's status to be changed through Select component.
+4. Allow ticket's status to be changed through <select> component.
 5. Optimize code perfomance.
 
 Stretch goals
